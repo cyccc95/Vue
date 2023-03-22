@@ -7,16 +7,26 @@
     <p>{{ price[i] }}만원</p>
   </div> -->
   <div>
+    <img src="./assets/room0.jpg" class="room-img" />
     <h4>{{ products[0] }}</h4>
     <p>50만원</p>
+    <!-- v-on:click : @click으로 가능 -->
+    <button v-on:click="increase(0)">허위매물신고</button>
+    <span>신고수 : {{ 신고수[0] }}</span>
   </div>
   <div>
+    <img src="./assets/room1.jpg" class="room-img" />
     <h4>{{ products[1] }}</h4>
     <p>60만원</p>
+    <button v-on:click="increase(1)">허위매물신고</button>
+    <span>신고수 : {{ 신고수[1] }}</span>
   </div>
   <div>
+    <img src="./assets/room2.jpg" class="room-img" />
     <h4>{{ products[2] }}</h4>
     <p>70만원</p>
+    <button v-on:click="increase(2)">허위매물신고</button>
+    <span>신고수 : {{ 신고수[2] }}</span>
   </div>
 </template>
 
@@ -28,8 +38,14 @@ export default {
       메뉴들: ["Home", "Shop", "About"],
       products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
       price: [50, 60, 70],
-      스타일: "color : blue",
+      신고수: [0, 0, 0],
     };
+  },
+  // vue에서 함수 만드는 곳
+  methods: {
+    increase(i) {
+      this.신고수[i]++;
+    },
   },
   components: {},
 };
@@ -53,5 +69,10 @@ export default {
 .menu a {
   color: white;
   padding: 10px;
+}
+
+.room-img {
+  width: 100%;
+  margin-top: 40px;
 }
 </style>
