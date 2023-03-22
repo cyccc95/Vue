@@ -1,8 +1,9 @@
 <template>
   <div class="black-bg" v-if="모달창열렸니">
     <div class="white-bg">
-      <h4>상세페이지임</h4>
-      <p>상세페이지 내용임</p>
+      <h4>{{ 원룸들[누른번호].title }}</h4>
+      <p>{{ 원룸들[누른번호].content }}</p>
+      <p>{{ 원룸들[누른번호].price }}만원</p>
       <button @click="모달창열렸니 = false">닫기</button>
     </div>
   </div>
@@ -13,8 +14,14 @@
 
   <div v-for="i in 원룸들" :key="i.id">
     <img :src="i.image" class="room-img" />
-    <h4 @click="모달창열렸니 = true">{{ i.title }}</h4>
-    <p>{{ i.content }}</p>
+    <h4
+      @click="
+        모달창열렸니 = true;
+        누른번호 = i.id;
+      "
+    >
+      {{ i.title }}
+    </h4>
     <p>{{ i.price }}만원</p>
   </div>
 </template>
@@ -26,6 +33,7 @@ export default {
   name: "App",
   data() {
     return {
+      누른번호: 0,
       원룸들: data,
       메뉴들: ["Home", "Shop", "About"],
       모달창열렸니: false,
