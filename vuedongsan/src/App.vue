@@ -2,8 +2,21 @@
   <div class="menu">
     <a v-for="i in 메뉴들" :key="i">{{ i }}</a>
   </div>
-  <div v-for="i in products" :key="i">
-    <h4>{{ i }}</h4>
+  <!-- <div v-for="(a, i) in 3" :key="a">
+    <h4>{{ products[i] }}</h4>
+    <p>{{ price[i] }}만원</p>
+  </div> -->
+  <div>
+    <h4>{{ products[0] }}</h4>
+    <p>50만원</p>
+  </div>
+  <div>
+    <h4>{{ products[1] }}</h4>
+    <p>60만원</p>
+  </div>
+  <div>
+    <h4>{{ products[2] }}</h4>
+    <p>70만원</p>
   </div>
 </template>
 
