@@ -1,33 +1,24 @@
 <template>
-  <div class="black-bg" v-if="모달창열렸니">
-    <div class="white-bg">
-      <h4>{{ 원룸들[누른번호].title }}</h4>
-      <p>{{ 원룸들[누른번호].content }}</p>
-      <p>{{ 원룸들[누른번호].price }}만원</p>
-      <button @click="모달창열렸니 = false">닫기</button>
-    </div>
-  </div>
+  <ModalComponent
+    :원룸들="원룸들"
+    :누른번호="누른번호"
+    :모달창열렸니="모달창열렸니"
+  />
 
   <div class="menu">
     <a v-for="i in 메뉴들" :key="i">{{ i }}</a>
   </div>
 
-  <div v-for="i in 원룸들" :key="i.id">
-    <img :src="i.image" class="room-img" />
-    <h4
-      @click="
-        모달창열렸니 = true;
-        누른번호 = i.id;
-      "
-    >
-      {{ i.title }}
-    </h4>
-    <p>{{ i.price }}만원</p>
-  </div>
+  <DiscountComponent />
+
+  <CardComponent :원룸="원룸들[i]" v-for="(원룸, i) in 원룸들" :key="원룸" />
 </template>
 
 <script>
 import data from "./assets/oneroom";
+import CardComponent from "./components/CardComponent.vue";
+import DiscountComponent from "./components/DiscountComponent.vue";
+import ModalComponent from "./components/ModalComponent.vue";
 
 export default {
   name: "App",
@@ -41,7 +32,7 @@ export default {
   },
   // vue에서 함수 만드는 곳
   methods: {},
-  components: {},
+  components: { DiscountComponent, ModalComponent, CardComponent },
 };
 </script>
 
@@ -71,25 +62,5 @@ div {
 .menu a {
   color: white;
   padding: 10px;
-}
-
-.room-img {
-  width: 100%;
-  margin-top: 40px;
-}
-
-.black-bg {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  padding: 20px;
-}
-
-.white-bg {
-  width: 100%;
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
 }
 </style>
