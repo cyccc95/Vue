@@ -1,5 +1,6 @@
 <template>
   <ModalComponent
+    @closeModal="모달창열렸니 = false"
     :원룸들="원룸들"
     :누른번호="누른번호"
     :모달창열렸니="모달창열렸니"
@@ -11,7 +12,15 @@
 
   <DiscountComponent />
 
-  <CardComponent :원룸="원룸들[i]" v-for="(원룸, i) in 원룸들" :key="원룸" />
+  <CardComponent
+    @openModal="
+      모달창열렸니 = true;
+      누른번호 = $event;
+    "
+    :원룸="원룸들[i]"
+    v-for="(원룸, i) in 원룸들"
+    :key="원룸"
+  />
 </template>
 
 <script>
