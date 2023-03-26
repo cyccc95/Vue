@@ -33,6 +33,16 @@ export default {
       month: 1,
     };
   },
+  watch: {
+    // 데이터 이름과 같게 작명
+    // 두번째 파라미터는 변경 전 데이터
+    month(a) {
+      if (a >= 13) {
+        alert("13 이상 입력하지 마셈");
+        this.month = 1;
+      }
+    },
+  },
 };
 </script>
 
