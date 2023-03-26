@@ -4,8 +4,18 @@
       <img :src="원룸들[누른번호].image" style="width: 100%" />
       <h4>{{ 원룸들[누른번호].title }}</h4>
       <p>{{ 원룸들[누른번호].content }}</p>
-      <p>{{ 원룸들[누른번호].price }}만원</p>
-      <button @click="$emit('closeModal')">닫기</button>
+      <!-- input에 입력한 것은 전부 문자자료형 -->
+      <!-- <input @input="month = $event.target.value" /> -->
+      <input v-model.number="month" />
+      <p>{{ month }}개월 선택함 : {{ 원룸들[누른번호].price * month }}만원</p>
+      <button
+        @click="
+          $emit('closeModal');
+          month = 1;
+        "
+      >
+        닫기
+      </button>
     </div>
   </div>
 </template>
@@ -17,6 +27,11 @@ export default {
     원룸들: Array,
     누른번호: Number,
     모달창열렸니: Boolean,
+  },
+  data() {
+    return {
+      month: 1,
+    };
   },
 };
 </script>
