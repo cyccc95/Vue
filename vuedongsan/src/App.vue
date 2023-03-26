@@ -14,6 +14,9 @@
 
   <DiscountComponent />
 
+  <button @click="priceSort">가격순 정렬</button>
+  <button @click="sortBack">되돌리기</button>
+
   <CardComponent
     @openModal="
       모달창열렸니 = true;
@@ -36,13 +39,23 @@ export default {
   data() {
     return {
       누른번호: 0,
-      원룸들: data,
+      원룸들: [...data],
+      원룸들오리지널: [...data],
       메뉴들: ["Home", "Shop", "About"],
       모달창열렸니: false,
     };
   },
   // vue에서 함수 만드는 곳
-  methods: {},
+  methods: {
+    priceSort() {
+      this.원룸들.sort(function (a, b) {
+        return a.price - b.price;
+      });
+    },
+    sortBack() {
+      this.원룸들 = [...this.원룸들오리지널];
+    },
+  },
   components: { DiscountComponent, ModalComponent, CardComponent },
 };
 </script>
