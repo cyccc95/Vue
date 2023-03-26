@@ -12,7 +12,7 @@
     <a v-for="i in 메뉴들" :key="i">{{ i }}</a>
   </div>
 
-  <DiscountComponent />
+  <DiscountComponent v-if="showDiscount == true" />
 
   <button @click="priceSort">가격순 정렬</button>
   <button @click="sortBack">되돌리기</button>
@@ -38,6 +38,7 @@ export default {
   name: "App",
   data() {
     return {
+      showDiscount: true,
       누른번호: 0,
       원룸들: [...data],
       원룸들오리지널: [...data],
@@ -55,6 +56,13 @@ export default {
     sortBack() {
       this.원룸들 = [...this.원룸들오리지널];
     },
+  },
+  // lifecycle hook
+  mounted() {
+    // this를 쓰려면 arrow function 사용
+    setTimeout(() => {
+      this.showDiscount = false;
+    }, 2000);
   },
   components: { DiscountComponent, ModalComponent, CardComponent },
 };
