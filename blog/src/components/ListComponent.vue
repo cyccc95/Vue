@@ -1,10 +1,12 @@
 <template>
   <div class="d-flex align-center flex-column">
-    <div v-for="블로그글 in 블로그글들" :key="블로그글">
+    <div
+      v-for="(블로그글, i) in 블로그글들"
+      :key="블로그글"
+      @click="$router.push('/detail/' + (i + 1))"
+    >
       <v-card class="pa-5 ma-5" width="400">
         <div>{{ 블로그글.title }}</div>
-        <div>{{ 블로그글.content }}</div>
-        <div>{{ 블로그글.date }}</div>
       </v-card>
     </div>
   </div>
