@@ -14,7 +14,7 @@
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
+      <input @change="upload" type="file" id="file" class="inputfile" />
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
@@ -44,6 +44,13 @@ export default {
           this.더보기++;
         })
         .catch((err) => console.log(err));
+    },
+    upload(e) {
+      let file = e.target.files;
+      console.log(file[0]);
+      let url = URL.createObjectURL(file[0]);
+      console.log(url);
+      this.step = 1;
     },
   },
 };
