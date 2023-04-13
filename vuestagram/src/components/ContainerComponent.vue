@@ -11,11 +11,12 @@
         :style="`background-image:url(${이미지})`"
       ></div>
       <div class="filters">
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
+        <FilterBox
+          :이미지="이미지"
+          v-for="filter in 필터들"
+          :key="filter"
+          :filter="filter"
+        ></FilterBox>
       </div>
     </div>
 
@@ -38,13 +39,47 @@ write!</textarea
 </template>
 <script>
 import PostComponent from "./PostComponent";
+import FilterBox from "./FilterBox.vue";
+
 export default {
   name: "ContainerComponent",
-  components: { PostComponent },
+  components: { PostComponent, FilterBox },
   props: {
     게시물: Array,
     step: Number,
     이미지: String,
+  },
+  data() {
+    return {
+      필터들: [
+        "aden",
+        "_1977",
+        "brannan",
+        "brooklyn",
+        "clarendon",
+        "earlybird",
+        "gingham",
+        "hudson",
+        "inkwell",
+        "kelvin",
+        "lark",
+        "lofi",
+        "maven",
+        "mayfair",
+        "moon",
+        "nashville",
+        "perpetua",
+        "reyes",
+        "rise",
+        "slumber",
+        "stinson",
+        "toaster",
+        "valencia",
+        "walden",
+        "willow",
+        "xpro2",
+      ],
+    };
   },
 };
 </script>
