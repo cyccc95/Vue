@@ -2,7 +2,12 @@
   <div
     :class="`filter-item ${filter}`"
     :style="`background-image:url(${이미지})`"
-  ></div>
+  >
+    <slot></slot>
+    <!-- slot 여러개 사용법 -->
+    <!-- <slot name="a"></slot>
+    <slot name="b"></slot> -->
+  </div>
 </template>
 <script>
 export default {

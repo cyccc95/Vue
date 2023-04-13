@@ -16,7 +16,12 @@
           v-for="filter in 필터들"
           :key="filter"
           :filter="filter"
-        ></FilterBox>
+        >
+          {{ filter }}
+          <!-- 슬롯 여러개 -->
+          <!-- <template v-slot:a> 데이터1</template>
+          <template v-slot:b> 데이터2</template> -->
+        </FilterBox>
       </div>
     </div>
 
